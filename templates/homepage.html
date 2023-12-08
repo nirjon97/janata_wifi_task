@@ -1,0 +1,70 @@
+<!-- templates/stock_table.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data Table</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;"><b>Stock Data Table</b></h1>
+    <h1 style="text-align: center;">--------------------------------------</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th style="background-color: rgb(114, 234, 110);">Date</th>
+            <th style="background-color: cornflowerblue;">Trade Code</th>
+            <th style="background-color: darkgoldenrod;">High</th>
+            <th style="background-color: deepskyblue;">Low</th>
+            <th style="background-color: lightcoral;">Open</th>
+            <th style="background-color: mediumorchid;">Close</th>
+            <th style="background-color: turquoise;">Volume</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in stock_data %}
+            <tr>
+                <td>{{ entry.date }}</td>
+                <td>{{ entry.trade_code }}</td>
+                <td>{{ entry.high }}</td>
+                <td>{{ entry.low }}</td>
+                <td>{{ entry.open }}</td>
+                <td>{{ entry.close }}</td>
+                <td>{{ entry.volume }}</td>
+                <td><a href="{% url 'edit_stock_entry' entry.id %}" class="edit-link">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

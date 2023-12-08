@@ -1,0 +1,89 @@
+<!-- templates/edit_stock_entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Stock Entry</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="post">
+        {% csrf_token %}
+        <h2>Edit Stock Entry</h2>
+    
+        <label for="date">Date:</label>
+        <input type="date" name="date" value="{{ entry.date }}" required>
+    
+        <label for="trade_code">Trade Code:</label>
+        <input type="text" name="trade_code" value="{{ entry.trade_code }}" required>
+    
+        <label for="high">High:</label>
+        <input type="number" name="high" value="{{ entry.high }}" required>
+    
+        <label for="low">Low:</label>
+        <input type="number" name="low" value="{{ entry.low }}" required>
+    
+        <label for="open">Open:</label>
+        <input type="number" name="open" value="{{ entry.open }}" required>
+    
+        <label for="close">Close:</label>
+        <input type="number" name="close" value="{{ entry.close }}" required>
+    
+        <label for="volume">Volume:</label>
+        <input type="number" name="volume" value="{{ entry.volume }}" required>
+    
+        <input type="submit" value="Update">
+    </form>
+
+</body>
+</html>
